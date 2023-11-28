@@ -1,4 +1,7 @@
+import { connectDb } from "@/helper/db";
 import { NextResponse } from "next/server";
+
+connectDb()
 
 export function GET() {
   const user = [
@@ -36,7 +39,17 @@ export function GET() {
 
   return NextResponse.json(user);
 }
-export function POST() {}
+export async function POST(request) {
+
+  // const body =request.body
+  // console.log(body);
+
+const jsonData =await request.json();
+console.log(jsonData);
+  return NextResponse.json({
+    message:"postin post data"
+  })
+}
 export function DELETE(request) {
   console.log();
   return NextResponse.json({
